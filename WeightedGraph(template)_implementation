@@ -8,10 +8,11 @@
 using namespace std;
 
 
-template<typename T>
+template<typename T>                
 
 class graph{
-    map<T,list<pair<T,int>>>hash_map;
+    unordered_map<T,list<pair<T,int>>>hash_map;     //you can use map for sorted  by key
+                                                          //hash_map is name of map
     
     public:
         void addEdge(T u,T v,int dis, bool bidir)
