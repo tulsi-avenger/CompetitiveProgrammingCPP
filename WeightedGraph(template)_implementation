@@ -1,0 +1,49 @@
+#include <bits/stdc++.h>
+
+
+using namespace std;
+
+
+template<typename T>
+
+class graph{
+    map<T,list<pair<T,int>>>hash_map;
+    
+    public:
+        void addEdge(T u,T v,int dis, bool bidir)
+        {
+            hash_map[u].push_back(make_pair(v,dis));
+            if(bidir)
+            {
+                 hash_map[v].push_back(make_pair(u,dis));
+            }
+        }
+        
+        void print()
+        {
+            for(auto j:hash_map)
+            {
+                cout<<j.first<<"-> ";
+                for(auto k:j.second)
+                {
+                    cout<<"("<<k.first<<","<<k.second<<") ";
+                }
+                cout<<endl;
+            }
+        }
+ };
+
+int main() {
+    
+        graph <string>india;
+        india.addEdge("delhi","kanpur",35,true);
+        india.addEdge("delhi","chennai",45,false);
+        india.addEdge("kanpur","dehradun",38,true);
+        india.addEdge("kanpur","mumbai",30,true);
+        india.addEdge("delhi","agra",40,true);
+        india.addEdge("kanpur","chennai",37,0);
+        india.addEdge("agra","mumbai",32,true);
+        india.addEdge("dehradun","agra",42,true);
+        india.print();
+        return 0;
+}
