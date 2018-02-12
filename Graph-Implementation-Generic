@@ -1,0 +1,54 @@
+//                              https://ide.codingblocks.com/#/s/6843
+
+#include<iostream>
+#include<unordered_map>
+#include<list>
+
+using namespace std;
+template<typename T>
+class graph{
+  
+  int V;
+  unordered_map<T,list<T>> hash_map;
+  public:
+    graph(int v)
+    {
+        V=v;
+       
+    }
+    void addedge(T u,T v, bool bidir)
+    {
+        hash_map[u].push_back(v);
+        if(bidir)
+        {
+            hash_map[v].push_back(u);
+        }
+    }
+    void print()
+    {
+        for(auto it:hash_map)
+        {
+            cout<<it.first<<"->";
+            for(auto it1:it.second)
+            {
+                cout<<it1<<",";
+            }
+            cout<<endl;
+        }
+    }
+    
+};
+
+int main()
+{
+   graph<string>g(6);
+   
+   g.addedge("trump","modi",1);
+   g.addedge("putin","trump",0);
+   g.addedge("putin","pop",0);
+   g.addedge("putin","modi",0);
+   g.addedge("modi","yogi",1);
+   g.addedge("prabhu","modi",0);
+   g.addedge("yogi","prabhu",0);
+   g.print();
+}
